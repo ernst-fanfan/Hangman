@@ -6,6 +6,7 @@ run the hangman game.
 
 import tkinter as tk
 from logic.config import Config
+from logic.state import State
 
 class Interface:
     """
@@ -19,6 +20,7 @@ class Interface:
         and draw the boot screen then present the menu.
         """
         self.config =  config
+        self.state = State()
         self.draw_boot_screen()
         
         
@@ -31,6 +33,11 @@ class Interface:
         self.root.title("Hangman " + self.config.get_version())
         self.root.geometry("800x600")
         self.root.resizable(False, False)
+        intro = tk.Label(
+            self.root, text=self.state.get_message(), font=("Arial", 20),
+            justify=tk.CENTER, wraplength=600
+            )
+        intro.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
         self.root.mainloop()
         
     def start(self):
