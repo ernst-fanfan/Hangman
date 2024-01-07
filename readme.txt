@@ -1,0 +1,1 @@
+This is a python app that allows the user to play hang man against an AI.
